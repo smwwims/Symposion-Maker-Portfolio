@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de-AT">
+    <head>
+        <meta name="author" content="Simon Wimmer">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        {% block head %} {% endblock head %}
+    </head>
+
+    <body>
+        <header>
+            <img src="{{ url_for('static', filename='images/wifi_logo.png') }}" id="WiFi" alt="WiFi Logo">
+            {% block header %} {% endblock header %}
+            <img src="{{ url_for('static', filename='images/wsh_logo.png') }}" id="WSH" alt="Werkschulheim Felbertal Logo">
+        </header>
+        {% block body %} {% endblock body %}
+        <div id="version-info">
+            Version 1.0.0<br>
+            Last Update: 2024-06-27<br>
+            Developed by Simon M. Wimmer
+        </div>
+        </div>
+    </body>
+</html>

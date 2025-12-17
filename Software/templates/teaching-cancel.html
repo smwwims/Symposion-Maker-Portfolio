@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Teaching</title>
+{% endblock %}
+
+{% block header %} 
+    <h1>Teaching</h1>
+{% endblock header %}
+
+{% block body %}
+    <h3>Wollen Sie das Teaching wirklich abbrechen?</h3>
+    <div class="grid-container">
+        <div class="left"><form method="GET" action="/pageTeaching" class="pageButton"><input type="submit" value="Zurück" class="pageInput" style="background-color: rgba(67, 252, 219, 0.6);"/></form></div>
+        <div class="right"><form method="GET" action="/teaching/close" class="pageButton"><input type="submit" value="Abbrechen" class="pageInput" style="background-color: rgb(255, 114, 69);"/></form></div>
+    </div>
+{% endblock %}

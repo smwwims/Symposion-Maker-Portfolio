@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Teaching</title>
+{% endblock %}
+
+{% block header %} 
+    <h1>Teaching</h1>
+{% endblock header %}
+
+{% block body %}
+    <h3>Wie soll die Route heißen?</h3>
+    <div class="divCentered">
+        <form method="POST" action="/teaching/savePath/submitPath">
+            <input type="text" name="route_name" class="textInput" style="padding-left: 10px;">
+            <br><br>
+            <div style="text-align: center;">
+                <input type="submit" value="Speichern" class="pageInput" style="background-color: rgba(67, 252, 219, 0.6); margin-top: 10px;">
+            </div>
+        </form>
+        <br>
+        <form method="GET" action="/pageTeaching" class="pageButton">
+            <input type="submit" value="Zurück" class="pageInput" style="background-color: rgba(255, 116, 69, 0.7);"/>
+        </form>
+    </div>
+{% endblock %}

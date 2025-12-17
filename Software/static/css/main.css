@@ -1,0 +1,521 @@
+/* base.html */
+body {
+    background-color: #dbf9ec;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 64px;
+}
+
+h3 {
+    text-align: center;
+    font-size: 28px;
+}
+
+#WSH {
+    float: right;
+    margin-right: 20px;
+}
+
+#version-info {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    font-size: 12px;
+    color: #333; 
+}
+
+.backButtonCentered {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.divCentered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* index.html */
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 30px;
+    column-gap: 70px;
+    margin-top: 30px;
+}
+
+.left {
+    margin-left: auto;
+}
+
+.pageButton {
+    display: flex;
+    flex-direction: column;
+}
+
+.pageInput {
+    width: 400px;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 28px;
+    border: none;
+    color: white;
+}
+
+/* Teaching */
+.teachingInput {
+    width: 400px;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 28px;
+    border: none;
+    color: white;
+}
+
+#teachingInstructions {
+    margin: auto;
+    width: 60%;
+    font-size: 22px;
+}
+
+.textInput {
+    width: 400px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 32px;
+    border: none;
+    color: black;
+}
+
+/* Height Adjustment */
+.arrow-down {
+    display: inline-block;
+}
+
+.arrow-down input[type="submit"] {
+    appearance: none;
+    background: none;
+    border: none;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgba(67, 252, 219, 0.6);
+    cursor: pointer;
+    padding: 0;
+}
+
+.arrow-up {
+    display: inline-block;
+}
+
+.arrow-up input[type="submit"] {
+    appearance: none;
+    background: none;
+    border: none;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid rgba(67, 252, 219, 0.6);
+    cursor: pointer;
+    padding: 0;
+}
+
+#heightTable {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    border-collapse: collapse;
+    justify-content: center;
+    align-items: center;
+}
+
+#heightTable td {
+    width: 33.33%;
+    text-align: center;
+}
+
+/* light.html */
+.control-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.control-form label {
+    margin: 10px 0 5px 0;
+    font-size: 18px;
+}
+
+.control-form input[type="color"],
+.control-form input[type="range"] {
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 400px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 18px;
+    border: none;
+    color: white;
+    background-color: #43a047;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #388e3c;
+}
+
+.rainbow-btn {
+    background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
+}
+
+
+/* presentation.html */
+.buttonRow {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    max-width: 400px;
+}
+
+.fullWidth {
+    width: 400px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    flex-direction: column;
+}
+
+.overlayContent {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bottomLeft {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 18px;
+    border: none;
+    color: white;
+    background-color: #43a047;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottomLeft:hover {
+    background-color: #388e3c;
+}
+
+.bottomLeft::before {
+    content: '\2190'; /* Unicode character for left arrow */
+}
+
+
+/* debug.html */
+.dioHigh {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(67, 252, 219, 0.6);
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dioLow {
+    width: 30px;
+    height: 30px;
+    background-color: rgb(217, 217, 217);
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#dioTable {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border-collapse: collapse;
+    justify-content: center;
+    align-items: center;
+}
+
+#dioTable th {
+    font-size: 20px;
+}
+
+#dioTable td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Error Page */
+#errorTable {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    border-collapse: collapse;
+    justify-content: center;
+    align-items: center;
+    border-spacing: 50px 0;
+}
+
+.tableSpace {
+    width: 30px;
+}
+
+
+
+/* Robotino Display */
+@media only screen and (max-width: 1024px) {
+    /* base.html */
+    h1 {
+        font-size: 55px;
+    }
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 28px;
+    }
+
+    #WSH {
+        transform: scale(0.85);
+    }
+
+    #WiFi {
+        transform: scale(0.85);
+    }
+
+    #version-info {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .backButtonCentered {
+        margin-top: 30px;
+    }
+
+    /* index.html */
+    .grid-container {
+        row-gap: 20px;
+        column-gap: 50px;
+        margin-top: 30px;
+    }
+
+    .pageInput {
+        width: 350px;
+        height: 50px;
+        border-radius: 20px;
+        font-size: 25px;
+    }
+
+    /* Teaching */
+    #teachingInstructions {
+        margin: auto;
+        width: 85%;
+        font-size: 15px;
+    }
+
+    .textInput {
+        width: 400px;
+        height: 35px;
+        border-radius: 20px;
+        font-size: 24px;
+    }
+
+    .teachingInput {
+        width: 300px;
+        height: 40px;
+        border-radius: 15px;
+        font-size: 20px;
+        border: none;
+        color: white;
+    }
+
+    #teaching-container {
+        row-gap: 10px;
+        column-gap: 30px;
+        margin-top: 10px;
+    }
+
+    /* Height Adjustment */
+    .arrow-down input[type="submit"] {
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 20px solid rgba(67, 252, 219, 0.6);
+    }
+
+    .arrow-up input[type="submit"] {
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 20px solid rgba(67, 252, 219, 0.6);
+    }
+
+    #heightTable {
+        margin-top: 30px;
+        width: 30%;
+    }
+
+    #heightTable td {
+        width: 33.33%;
+    }
+
+    /* light.html */
+    .control-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .control-form label {
+        margin: 10px 0 5px 0;
+        font-size: 18px;
+    }
+
+    .control-form input[type="color"],
+    .control-form input[type="range"] {
+        margin-bottom: 10px;
+    }
+
+
+    /* presentation.html */
+    .buttonRow {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        flex-direction: column;
+    }
+
+    .overlayContent {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+    }
+
+    .bottomLeft {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        width: 100px;
+        height: 40px;
+        border-radius: 20px;
+        font-size: 18px;
+        border: none;
+        color: white;
+        background-color: #43a047;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bottomLeft:hover {
+        background-color: #388e3c;
+    }
+
+    .bottomLeft::before {
+        content: '\2190'; /* Unicode character for left arrow */
+    }
+
+
+    /* debug.html */
+    .dioHigh {
+        width: 25px;
+        height: 25px;
+        background-color: rgba(67, 252, 219, 0.6);
+        border-radius: 50%;
+        display: inline-block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .dioLow {
+        width: 25px;
+        height: 25px;
+        background-color: rgb(217, 217, 217);
+        border-radius: 50%;
+        display: inline-block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    #dioTable {
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        border-collapse: collapse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #dioTable th {
+        font-size: 18px;
+    }
+
+    #dioTable td {
+        text-align: center;
+        vertical-align: middle;
+        font-size: 10px;
+    }
+}

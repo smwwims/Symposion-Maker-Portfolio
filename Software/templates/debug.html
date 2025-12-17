@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Debug</title>
+{% endblock %}
+
+{% block header %} 
+    <h1>Debug</h1>
+    <script>
+        function loadClasses() {
+            fetch('/updateDIO')
+            .then(response => response.json())
+                .then(data => {
+                    console.log("Data received:", data); // Log the data
+                    for (let i = 0; i < data.length; i++) {
+                        let elementId = `dio${i + 1}`;
+                        let element = document.getElementById(elementId);
+                        if (element) {
+                            console.log(`Updating element ${elementId} to ${data[i] ? 'dioHigh' : 'dioLow'}`);
+                            if (data[i]) {
+                                element.className = "dioHigh";
+                            } else {
+                                element.className = "dioLow";
+                            }
+                        } else {
+                            console.error(`Element with ID ${elementId} not found`);
+                        }
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        setInterval(loadClasses, 500);
+        window.onload = loadClasses;
+    </script>
+{% endblock header %}
+
+{% block body %}
+    <table id="dioTable">
+        <tr>
+            <th>DI1</th>
+            <th>DI2</th>
+            <th>DI3</th>
+            <th>DI4</th>
+            <th>DI5</th>
+            <th>DI6</th>
+            <th>DI7</th>
+            <th>DI8</th>
+        </tr>
+        <tr>
+            <td>S1: Not-Aus</td>
+            <td>B15: ELS</td>
+            <td>B20: Flasche 1</td>
+            <td>B21: Flasche 2</td>
+            <td>B22: Flasche 3</td>
+            <td>B23: Flasche 4</td>
+            <td>B24: Flasche 5</td>
+            <td>B25: Flasche 6</td>
+        </tr>
+        <tr>
+            <td><div class="" id="dio1"></div></td>
+            <td><div class="" id="dio2"></div></td>
+            <td><div class="" id="dio3"></div></td>
+            <td><div class="" id="dio4"></div></td>
+            <td><div class="" id="dio5"></div></td>
+            <td><div class="" id="dio6"></div></td>
+            <td><div class="" id="dio7"></div></td>
+            <td><div class="" id="dio8"></div></td>
+        </tr>
+        <tr>
+            <td><form method="POST" action="/setDQ?DQ=1"><input type="submit" value="" class="" id="dio9"/></form></td>
+            <td><form method="POST" action="/setDQ?DQ=2"><input type="submit" value="" class="" id="dio10"/></form></td>
+            <td><form method="POST" action="/setDQ?DQ=3"><input type="submit" value="" class="" id="dio11"/></form></td>
+            <td><form method="POST" action="/setDQ?DQ=4"><input type="submit" value="" class="" id="dio12"/></form></td>
+            <td><form method="POST" action="/setDQ?DQ=5"><input type="submit" value="" class="" id="dio13"/></form></td>
+            <td><form method="POST" action="/setDQ?DQ=6"><input type="submit" value="" class="" id="dio14"/></form></td>
+            <td><form method="POST" action="/setDQ?DQ=7"><input type="submit" value="" class="" id="dio15"/></form></td>
+            <td><form method="POST" action="/setDQ?DQ=8"><input type="submit" value="" class="" id="dio16"/></form></td>
+        </tr>
+        <tr>
+            <td>G5: Infrarotsender</td>
+            <td>K3: Arduino Reset</td>
+            <td>Unbelegt</td>
+            <td>Unbelegt</td>
+            <td>Unbelegt</td>
+            <td>Unbelegt</td>
+            <td>Unbelegt</td>
+            <td>Unbelegt</td>
+        </tr>
+        <tr>
+            <th>DQ1</th>
+            <th>DQ2</th>
+            <th>DQ3</th>
+            <th>DQ4</th>
+            <th>DQ5</th>
+            <th>DQ6</th>
+            <th>DQ7</th>
+            <th>DQ8</th>
+        </tr>
+    </table>
+
+    <form method="GET" action="/" class="backButtonCentered"><input type="submit" value="Zurück" class="pageInput" style="background-color: rgba(67, 252, 219, 0.6);"/></form>
+    <form method="GET" action="?reload" name="reload" style="visibility: hidden;"><input type="submit" value=""/></form>
+{% endblock %}

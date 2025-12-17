@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Teaching</title>
+{% endblock %}
+
+{% block header %} 
+    <h1>Teaching</h1>
+{% endblock header %}
+
+{% block body %}
+    <h3>Punkte: {{ poscounter }}</h3>
+    <ul id="teachingInstructions">
+        <li>Mithilfe des mitgelieferten Controllers können Sie Symposion manuell durch den Raum manövrieren.</li>
+        <li>Symposion wird immer den direkten Weg zwischen zwei eingespeicherten Punkten fahren.<br>Wählen Sie eine Route, die keine Hindernisse enthält.</li>
+        <li>Die erste eingespeicherte Position dient als Home Position.<br>Symposion muss bei Abfahren der Route von dieser Position gestartet werden.</li>
+        <li>Nach jedem Routendurchgang begibt sich Symposion zurück zur Home Position;<br>ein Erreichen der Home Position vom letzten Wegpunkt muss problemlos möglich sein.</li>
+    </ul>
+    <div class="grid-container" id="teaching-container">
+        <div class="left"><form method="POST" action="/teaching/deletePoint" class="pageButton"><input type="submit" value="Letzten Punkt löschen" class="teachingInput" style="background-color: rgba(255, 116, 69, 0.7);"/></form></div>
+        <div class="right"><form method="POST" action="/teaching/savePoint" class="pageButton"><input type="submit" value="Diesen Punkt einspeichern" class="teachingInput" style="background-color: rgba(67, 252, 219, 0.6);"/></form></div>
+        <div class="left"><form method="GET" action="/teaching/cancel" class="pageButton"><input type="submit" value="Abbrechen" class="teachingInput" style="background-color: rgb(255, 114, 69);"/></form></div>
+        <div class="right"><form method="POST" action="/teaching/savePath" class="pageButton"><input type="submit" value="Abschließen" class="teachingInput" style="background-color: rgba(67, 252, 218, 0.9);"/></form></div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Beleuchtung</title>
+{% endblock %}
+
+{% block header %} 
+    <h1>Beleuchtung</h1>
+{% endblock header %}
+
+{% block body %}
+    <form method="POST" action="/pageLight/changeLight" class="control-form">
+        <label for="color">Farbe:</label>
+        <input type="color" id="color" name="color" value="#43FCDB">
+        <br>
+        <button type="submit" class="btn">Einstellen</button>
+    </form>
+    <form method="POST" action="/pageLight/rainbow" class="control-form">
+        <input type="submit" value="Rainbow" class="btn rainbow-btn">
+    </form>
+    <form method="GET" action="/" class="backButtonCentered"><input type="submit" value="Zurück" class="pageInput" style="background-color: rgba(67, 252, 219, 0.6);"/></form>
+{% endblock %}

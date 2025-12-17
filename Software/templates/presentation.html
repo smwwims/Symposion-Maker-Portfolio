@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Präsentation</title>
+{% endblock %}
+
+{% block header %} 
+    <h1>Präsentation</h1>
+{% endblock header %}
+
+{% block body %}
+    <div class="divCentered">
+        <select id="songDropdown" class="textInput">
+            {% for song in songs %}
+                <option value="{{ song }}">{{ song }}</option>
+            {% endfor %}
+        </select>
+        <div class="buttonContainer">
+            <br>
+            <div class="buttonRow">
+                <button class="btn" onclick="playSong()" style="background-color: rgba(67, 252, 218, 0.9);">Play</button>
+                <button class="btn" onclick="stopSong()" style="background-color: rgba(255, 116, 69, 0.7);">Stop</button>
+            </div>
+            <button class="btn fullWidth" onclick="togglePlaylistMode()">Automatische Wiedergabe aktivieren</button>
+        </div>
+        <audio id="audioPlayer" controls style="display:none;"></audio>
+
+        <select id="imageDropdown" class="textInput" style="margin-top: 20px;">
+            <option value="">Select an image to overlay</option>
+            {% for image in images %}
+                <option value="{{ image }}">{{ image }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <div class="buttonContainer">
+            <button class="btn fullWidth" onclick="overlayImage()">Overlay Image</button>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay" style="display:none;">
+        <button class="btn bottomLeft" onclick="hideOverlay()">&#8592;</button>
+        <img id="overlayImage" src="" alt="Overlay" class="overlayContent">
+    </div>
+
+    <form method="GET" action="/" class="backButtonCentered"><input type="submit" value="Zurück" class="pageInput" style="background-color: rgba(67, 252, 219, 0.6);"/></form>
+
+    <script>
+        let playlist = [];
+        let currentSongIndex = -1;
+        let isPlaylistMode = false;
+
+        function playSong() {
+            const songDropdown = document.getElementById('songDropdown');
+            const selectedSong = songDropdown.value;
+
+            fetch('/play', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ song: selectedSong })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const audioPlayer = document.getElementById('audioPlayer');
+                audioPlayer.src = data.url;
+                audioPlayer.style.display = 'block';
+                audioPlayer.play();
+                currentSongIndex = Array.from(songDropdown.options).findIndex(option => option.value === selectedSong);
+            });
+        }
+
+        function stopSong() {
+            const audioPlayer = document.getElementById('audioPlayer');
+            audioPlayer.pause();
+            audioPlayer.style.display = 'none';
+            audioPlayer.src = '';
+        }
+
+        document.getElementById('audioPlayer').addEventListener('ended', function() {
+            if (isPlaylistMode) {
+                playNextSong();
+            }
+        });
+
+        function playNextSong() {
+            currentSongIndex++;
+            if (currentSongIndex >= playlist.length) {
+                currentSongIndex = 0; // Loop back to the first song
+            }
+            fetch('/play', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ song: playlist[currentSongIndex] })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const audioPlayer = document.getElementById('audioPlayer');
+                audioPlayer.src = data.url;
+                audioPlayer.play();
+            });
+        }
+
+        function loadPlaylist() {
+            fetch('/playlist')
+            .then(response => response.json())
+            .then(data => {
+                playlist = data.songs;
+            });
+        }
+
+        function togglePlaylistMode() {
+            isPlaylistMode = !isPlaylistMode;
+            const button = document.querySelector('button[onclick="togglePlaylistMode()"]');
+            button.textContent = isPlaylistMode ? 'Automatische Wiedergabe deaktivieren' : 'Automatische Wiedergabe aktivieren';
+        }
+
+        function overlayImage() {
+            const imageDropdown = document.getElementById('imageDropdown');
+            const selectedImage = imageDropdown.value;
+            if (selectedImage) {
+                const overlay = document.getElementById('overlay');
+                const overlayImage = document.getElementById('overlayImage');
+                overlayImage.src = `/images/${selectedImage}`;
+                overlay.style.display = 'flex';
+            }
+        }
+
+        function hideOverlay() {
+            const overlay = document.getElementById('overlay');
+            overlay.style.display = 'none';
+        }
+
+        // Load the playlist when the page loads
+        window.onload = loadPlaylist;
+    </script>
+{% endblock %}

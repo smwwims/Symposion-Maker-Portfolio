@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Symposion Home</title>
+{% endblock %}
+
+{% block header %} 
+    <h1>Symposion</h1>
+{% endblock header %}
+
+{% block body %}
+    <div class="grid-container">
+        <div class="left">
+            <form method="GET" action="/pageTeaching" class="pageButton"><input type="submit" value="Teaching" class="pageInput" style="background-color: rgba(67, 252, 219, 0.6);"/></form>
+        </div>
+        <div class="right">
+            <form method="GET" action="/pageDrive" class="pageButton"><input type="submit" value="Routenfahrmodus" class="pageInput" style="background-color: rgba(67, 252, 219, 0.6);"/></form>
+        </div>
+        <div class="left">
+            <form method="GET" action="/pageHeight" class="pageButton"><input type="submit" value="Höhenverstellung" class="pageInput" style="background-color: rgba(67, 252, 219, 0.6);"/></form>
+        </div>
+        <div class="right">
+            <form method="GET" action="/pageLight" class="pageButton"><input type="submit" value="Beleuchtung" class="pageInput" style="background-color: rgba(67, 252, 219, 0.6);"/></form>
+        </div>
+        <div class="left">
+            <form method="GET" action="/pagePresentation" class="pageButton"><input type="submit" value="Präsentation" class="pageInput" style="background-color: rgba(67, 252, 219, 0.6);"/></form>
+        </div>
+        <div class="right">
+            <form method="GET" action="/pageDebug" class="pageButton"><input type="submit" value="Debug" class="pageInput" style="background-color: rgba(67, 252, 219, 0.6);"/></form>
+        </div>
+    </div>
+{% endblock %}

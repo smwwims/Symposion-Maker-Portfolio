@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Routenfahrmodus</title>
+{% endblock %}
+
+{% block header %} 
+    <h1>Routenfahrmodus</h1>
+{% endblock header %}
+
+{% block body %}
+    {% if search_id %}
+        <h3>Ausgewählte Route: {{ search_id }}</h3>
+    {% endif %}
+    <div class="divCentered">
+        <form action="/pageDrive/start" method="post">
+            <select name="route" class="textInput">
+                {% for route in routes %}
+                <option value="{{ route }}">{{ route }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <div class="buttonContainer"></div>
+                <div class="buttonContainer">
+                    <button type="submit" class="btn fullWidth" style="background-color: rgba(67, 252, 219, 0.9); margin: 0 auto;">Auswählen</button>
+                </div></div>
+            </div>
+        </form>
+    </div>
+    <form method="GET" action="/" class="backButtonCentered"><input type="submit" value="Zurück" class="pageInput" style="background-color: rgba(67, 252, 219, 0.6);"/></form>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Fehler!</title>
+{% endblock %}
+
+{% block header %} 
+    <h1>Fehler!</h1>
+{% endblock header %}
+
+{% block body %}
+<div class="divCentered">
+    <table id="errorTable">
+        <tr>
+            <td>
+                <h2>Referenz:</h2>
+            </td>
+            <td class="tableSpace"></td>
+            <td>
+                {{ reference }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h2>Ursache:</h2>
+            </td>
+            <td class="tableSpace"></td>
+            <td>
+                {{ cause }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h2>Behebung:</h2>
+            </td>
+            <td class="tableSpace"></td>
+            <td>
+                {{ fix }}
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <form method="GET" action="/" class="backButtonCentered"><input type="submit" value="Quittieren" class="pageInput" style="background-color: rgb(255, 114, 69);"/></form>
+{% endblock %}
