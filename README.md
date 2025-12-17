@@ -33,9 +33,9 @@ Contains the **mechanical design files** for the robot add‑ons I designed. Thi
 - The **linear axis** mounted on top of the Robotino for the height‑adjustable platform.
 - The **circular platform table** with carved bottle placements.
 - The **internal platform** for additional sensors and electronics.
-- Exported formats suitable for viewing (e.g., STEP) and integration into other CAD assemblies.[file:21]
+- Exported formats suitable for viewing (e.g., STEP) and integration into other CAD assemblies.
 
-Vendor parts such as the Robotino base, standard aluminum profiles, and hardware are represented using manufacturer CAD where available.[file:21]
+Vendor parts such as the Robotino base, standard aluminum profiles, and hardware are represented using manufacturer CAD where available.
 
 ### `Electronics/`
 
