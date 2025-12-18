@@ -50,4 +50,4 @@ This board interfaces 5 V sensors (ToF, IR receiver), drives LED strips, and com
 ## Notes
 
 - This repo is intended as a **readable technical snapshot** of the project, not as a polished, general‑purpose library.
-- For a complete system description (mechanics, electronics, software, risk analysis, and operating manual), see the accompanying project documentation PDF.
+- For a complete system description (mechanics, electronics, software, risk analysis, and operating manual), see the accompanying [project documentation](Symposion_SMW_2023_EN.pdf).
